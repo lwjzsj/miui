@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            background-color:#F0F0F0;
+        }
+        #top{
+            background-color:#F0F0F0;
+            height:100px;
+            width:920px;
+            margin:0px auto;
+        }
+        #user{
+            width:90px;
+            height:35px;
+            text-align:center;
+            float:right;
+            margin-top:30px ;
+            margin-right:5px;
+        }
+        #guid{
+            height:60px;
+            background-color:#EF733E;
+        }
+        #guid1{
+            height:60px;
+            width:960px;
+            margin:0px auto;
+        }
+        .gui{
+            color:white;
+            text-align: center;
+            height:60px;
+            width:70px;
+            float:left;
+            line-height: 60px;
+            font-size: 18.333333px;
+        }
+        .gui:hover{
+            background-color:#F18350;
+        }
+        #shuomin{
+            width:960px;
+            height:100px;
+            margin:0px auto;
+        }
+        #content{
+            border-radius: 5px;
+            border:1px solid #C9C9C9;
+            width:960px;
+            height:1000px;
+            margin:0px auto;
+            background-color:#F7F7F7;
+        }
+        #lable
+        {
+            border-radius: 5px;
+            border:1px solid #C9C9C9;
+            float:right;
+            width:920px;
+            height:200px;
+            margin-top:20px;
+            margin-right: 20px;
+            background-color:#F0F0F0;
+        }
+        .cla1
+        {
+            font-size: 15px;
+            height:40px;
+            width:880px;
+            margin:0px auto;
+            line-height: 50px;
+            border-bottom: 1px #C9C9C9 dashed;
+        }
+        .cla
+        {
+            font-size: 15px;
+            height:100px;
+            width:880px;
+            margin:0px auto;
+            line-height: 50px;
+        }
+        .list1
+        {
+            height:80px;
+            width:900px;
+            margin:0px auto;
+            padding:10px;;
+            border-bottom: 1px dashed #C9C9C9;
+        }
+        .list1:hover
+        {
+            height:80px;
+            width:900px;
+
+            border-radius: 5px;
+            border: 1px solid #C9C9C9;
+            background-color:#F2F2F2;
+        }
+        a:link{
+            text-decoration:none;
+        }
+        a:visited{
+            text-decoration:none;
+        }
+        a:hover{
+            text-decoration:none;
+        }
+        a:active{
+            text-decoration:none;
+        }
+    </style>
+    <title>首页</title>
+</head>
+<body>
+<div id="top">
+    <if condition="session('?name')">
+        <div id="user">
+            {$name}
+            <a href="Home/User/logout"><span >注销</span></a>
+        </div>
+
+        <else/>
+        <a href="Home/User/login"><div id="user">
+            <span >登陆</span>
+        </div>
+        </a>
+    </if>
+
+
+</div>
+<div id="guid">
+    <div id="guid1">
+        <div class="gui" id="index">首页</div>
+        <div class="gui" id="new">新帖</div>
+        <div class="gui" id="model">板块</div>
+        <div class="gui" id="other">其他</div>
+    </div>
+</div>
+<div id="shuomin"></div>
+<div id="content">
+    <div id="lable">
+        <div class="cla1"><span style="font-weight:bold;">子板：</span></div>
+        <div class="cla1"><span style="font-weight:bold;">分类：</span></div>
+        <div class="cla"><span style="font-weight:bold;">筛选：</span></div>
+    </div>
+    <div style="height:20px;clear:both;"></div>
+    <foreach name="list" item="vo">
+        <div class="list1">
+            <div style="height:60px;width:60px;float: left;border-radius: 3px;background-color:#4C94C1;margin-top:10px;">头像</div>
+            <div style="font-size:22px;height:40px;width:840px;line-height: 40px;float: left;margin-top: 10px;"><a href="Home/Content/detail/id/{$vo.id}">{$vo.title}</a></div>
+            <div style="font-size:14px;height:20px;line-height: 20px;float: left;">{$vo.name}</div>
+        </div>
+    </foreach>
+</div>
+
+</body>
+</html>
