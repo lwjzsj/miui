@@ -1,0 +1,40 @@
+<volist name="list" id="vo">
+    <div class="list">
+        <div class="userhead">
+            <a href="__APP__/Home/User/Index/name/{$vo.name}">
+                <if condition="$vo.head neq null">
+                    <img class="img" src=__PUBLIC__/img/head/{$vo.head}>
+                    <else/>
+                    <img class="img" src=__PUBLIC__/img/head/default.jpg>
+                </if>
+                {$vo.name}
+            </a>
+        </div>
+        <div class="usercontent">
+            <div class="time">
+                发表于：{$vo.time}
+            </div>
+            <!--文本内容-->
+            <div class="textcont">
+                {$vo.content}
+            </div>
+            <!--图片-->
+
+            <if condition="$key eq 0">
+
+                <if condition="!empty($image)">
+
+                    <volist name="image" id="imag">
+
+                        <if condition="$imag neq ''">
+
+                            <img class="image" src="__PUBLIC__/img/{$vo.cid}/{$imag}">
+                        </if>
+                    </volist>
+                </if>
+            </if>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+
+</volist>

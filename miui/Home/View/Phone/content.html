@@ -1,0 +1,26 @@
+<div id="clist">
+    <volist name="list" id="vo">
+        <!--一个完整的主题-->
+        <div class="list">
+            <!--主题头像-->
+            <a href="__APP__/Home/User/index/name/{$vo.name}">
+                <div class="headimg">
+                    <if condition="$vo.img neq null">
+                        <img class="himg" src=__PUBLIC__/img/head/{$vo.img}>
+                        <else/>
+                        <img class="himg" src=__PUBLIC__/img/head/default.jpg>
+                    </if>
+                </div>
+            </a>
+            <!--主题标题，信息-->
+            <div class="cont">
+                <div class="title">
+                    <a href=__APP__/Home/Content/Index/name/{$name}/id/{$vo.id}>{$vo.title}</a>
+                </div>
+                <div class="listinfo">
+                    发表于:{$vo.time}&nbsp;|&nbsp;回复:{$vo.num}
+                </div>
+            </div>
+        </div>
+    </volist>
+</div>
