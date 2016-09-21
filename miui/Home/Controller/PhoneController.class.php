@@ -34,6 +34,7 @@ class PhoneController extends Controller {
     */
     public function recoder($recder,$name){
         $m=M("list");
+        $user=M("user");
         //主题排序
         switch($recder){
             case 1:$_SESSION["ord"]="time ASC";
@@ -45,6 +46,11 @@ class PhoneController extends Controller {
     }
     
     $list=$m->where("phoneclass='$name'")->order($_SESSION["ord"])->LIMIT(0,19)->select();
+    foreach($list as $key=> $val){
+        $where="name='$val[name]'";
+        $img=$user->where("$where")->getField("img");
+        $list["$key"]["img"]=$img;
+    }
     //var_dump($list);
     $this->assign("list",$list);
     $this->assign("name",$name);
